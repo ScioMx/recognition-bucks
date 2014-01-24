@@ -46,4 +46,12 @@ class UsersControllerTest < ActionController::TestCase
 
     assert_redirected_to users_path
   end
+
+  test "Should not create user if has incorrect email format" do
+    user = User.new()
+    user.name = "test name"
+    user.email = "test incorrect email"
+    assert !user.save()
+  end
+
 end

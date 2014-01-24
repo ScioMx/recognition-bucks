@@ -9,6 +9,7 @@ Feature: Display the list of users
 		When I visit the list of users
 		Then I should see all users
 
+	@javascript
 	Scenario: Create new user
 		Given I am in the users list page
 		When I click the new user link

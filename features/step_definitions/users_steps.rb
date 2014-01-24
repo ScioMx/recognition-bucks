@@ -25,7 +25,7 @@ end
 
 When(/^I instert de data$/) do
   fill_in("fld_name", :with => "test name")
-  fill_in("fld_email", :with => "test email")
+  fill_in("fld_email", :with => "test@email.com")
 end
 
 When(/^I click the submit button$/) do
