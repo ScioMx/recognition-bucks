@@ -43,3 +43,11 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+group :test do
+	gem "rspec-rails", ">= 2.0.1"
+	gem "cucumber-rails"
+	gem "database_cleaner"
+end
+
+gem 'selenium-webdriver'
