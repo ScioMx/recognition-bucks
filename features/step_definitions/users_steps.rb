@@ -33,6 +33,7 @@ When(/^I click the submit button$/) do
 end
 
 Then(/^I should see (.*) in the users list\.$/) do |test_email|
+	visit users_path
   page.should have_content(test_email)
 end
 
@@ -47,26 +48,38 @@ end
 Then(/^I should see a message for user creation faill$/) do
   page.should have_content("Email is invalid")
 end
-
+ 
 
 # Delete user
 
 When(/^I click the delete user link (.*)$/) do |test_email|
 
-	test_user = User.find_by email: test_email
+	page.should have_content(@test_email)
 
-	test_user.save
-
-  element = find(:xpath, "//*[@id='btn_delete_user' and @href='/users/#{test_user.id}']")
-  element.click
-
-end
-
-Then(/^A pop up window ask if are you sure\?$/) do
-  page.driver.browser.switch_to.alert.accept
+  find(:xpath, "//*[@id='btn_delete_user_#{test_email}']").click
 
 end
 
 Then(/^I should not see the (.*) in the table$/) do |test_email|
-  page.should have_no_content(test_email)
+  page.should_not have_content(test_email)
+end
+
+# Edit user
+
+When(/^I click the edit (.*) link$/) do |test_email|
+	find(:xpath, "//a[@id='btn_edit_user_#{test_email}']").click  
+end
+
+Then(/^I should see the form filled with user data$/) do
+   page.should have_xpath("//input[@value='test_name']")
+ 	 page.should have_xpath("//input[@value='test@email.com']")
+end
+
+Then(/^I change the name to (.*) and the email for (.*)$/) do |edited_name, edited_email|
+  fill_in("fld_name", :with => edited_name)
+  fill_in("fld_email", :with => edited_email)
+end
+
+Then(/^I should see a message (.*)$/) do |message|
+  page.should have_content(message)
 end
