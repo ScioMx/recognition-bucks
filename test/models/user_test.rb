@@ -21,6 +21,13 @@ class UserTest < ActiveSupport::TestCase
   	assert user.save, "User was not created"
   end
 
+  test "should retrive a user from data base" do
+    user = users(:fake_user)
+    assert_not_nil(user, "The user is nil")
+  end
+
+
+
   test "should not update user if it has an empty property" do
   	user = users(:fake_user)
   	assert_not user.update({:name => "test name", :email => ""}), "User cannot be updated with an empty property"
@@ -34,6 +41,14 @@ class UserTest < ActiveSupport::TestCase
   test "should update user" do
   	user = users(:fake_user)
   	assert user.update({:name => "test name", :email => "te_st@email.com"}), "The user was not updated"
+  end
+
+  test "Should delete de given user" do
+    user = users(:fake_user)
+
+    assert_difference("User.count", -1) do
+      user.delete
+    end
   end
 
 

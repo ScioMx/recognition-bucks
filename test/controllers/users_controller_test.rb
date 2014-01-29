@@ -51,7 +51,15 @@ class UsersControllerTest < ActionController::TestCase
     user = User.new()
     user.name = "test name"
     user.email = "test incorrect email"
-    assert !user.save()
+    assert_difference 'User.count', 0 do
+      assert !user.save() 
+    end
+  end
+
+  test "Should not update user if has incorrect email format" do
+    @user.name = "test name"
+    @user.email = "test incorrect email"
+    assert !@user.save
   end
 
 end
