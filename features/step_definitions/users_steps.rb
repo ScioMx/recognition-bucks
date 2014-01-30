@@ -1,15 +1,8 @@
 #encoding: utf-8
 
 When(/^I visit the list of users$/) do
-	  visit users_path
+	visit users_path
 end
-
-Then(/^I should see all users$/) do
-  
-end
-
-
-# Add new user
 
 Given(/^I am in the users list page$/) do
   visit users_path
@@ -17,10 +10,6 @@ end
 
 When(/^I click the new user link$/) do
   click_link_or_button( "btn_new_user")
-end
-
-Then(/^I should see the form to create a new user$/) do
-  
 end
 
 When(/^I insert a user (.*) and (.*)$/) do |test_name, test_email|
@@ -38,8 +27,6 @@ Then(/^I should see (.*) in the users list\.$/) do |test_email|
 end
 
 
-# Show create user message error
-
 When(/^I instert a user name and an incorrect email$/) do
   fill_in("fld_name", :with => "test name")
   fill_in("fld_email", :with => "test&email.com")
@@ -50,29 +37,23 @@ Then(/^I should see a message for user creation faill$/) do
 end
  
 
-# Delete user
-
 When(/^I click the delete user link (.*)$/) do |test_email|
-
 	page.should have_content(@test_email)
-
   find(:xpath, "//*[@id='btn_delete_user_#{test_email}']").click
-
 end
 
 Then(/^I should not see the (.*) in the table$/) do |test_email|
   page.should_not have_content(test_email)
 end
 
-# Edit user
 
 When(/^I click the edit (.*) link$/) do |test_email|
 	find(:xpath, "//a[@id='btn_edit_user_#{test_email}']").click  
 end
 
 Then(/^I should see the form filled with user data$/) do
-   page.should have_xpath("//input[@value='test_name']")
- 	 page.should have_xpath("//input[@value='test@email.com']")
+  page.should have_xpath("//input[@value='test_name']")
+ 	page.should have_xpath("//input[@value='test@email.com']")
 end
 
 Then(/^I change the name to (.*) and the email for (.*)$/) do |edited_name, edited_email|

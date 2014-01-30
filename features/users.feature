@@ -17,10 +17,6 @@ Feature: Display the list of users
 		When I click the delete user link delete_test@email.com
 		And I should not see the delete_test@email.com in the table
 
-	Scenario: Show registered users
-		When I visit the list of users
-		Then I should see all users
-
 	Scenario: Edit user
 		Given I am in the users list page
 		When I click the new user link
