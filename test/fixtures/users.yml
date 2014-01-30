@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+fake_user:
+  name: test_name
+  email: test@email.com
+
+second_fake_user:
+  name: second_test_name
+  email: second_test@email.com
