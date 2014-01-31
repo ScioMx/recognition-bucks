@@ -26,7 +26,6 @@ Then(/^I should see (.*) in the users list\.$/) do |test_email|
   page.should have_content(test_email)
 end
 
-
 When(/^I instert a user name and an incorrect email$/) do
   fill_in("fld_name", :with => "test name")
   fill_in("fld_email", :with => "test&email.com")
@@ -36,7 +35,6 @@ Then(/^I should see a message for user creation faill$/) do
   page.should have_content("Email is invalid")
 end
  
-
 When(/^I click the delete user link (.*)$/) do |test_email|
 	page.should have_content(@test_email)
   find(:xpath, "//*[@id='btn_delete_user_#{test_email}']").click
@@ -45,7 +43,6 @@ end
 Then(/^I should not see the (.*) in the table$/) do |test_email|
   page.should_not have_content(test_email)
 end
-
 
 When(/^I click the edit (.*) link$/) do |test_email|
 	find(:xpath, "//a[@id='btn_edit_user_#{test_email}']").click  
