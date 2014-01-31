@@ -31,9 +31,9 @@ gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
 
 group :test do
-	gem "rspec-rails", ">= 2.0.1"
-	gem "cucumber-rails", :require => false
-	gem "database_cleaner"
+  gem 'rake'
+  gem "cucumber-rails", :require => false
+  gem "database_cleaner"
 end
 
 group :doc do
