@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+# Use ActiveModel has_secure_password
+gem 'bcrypt-ruby', :require => "bcrypt"
+
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
 
@@ -43,9 +46,6 @@ end
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
-
-# Use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.1.2'
 
 # Use unicorn as the app server
 # gem 'unicorn'
