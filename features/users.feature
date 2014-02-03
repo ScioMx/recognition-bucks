@@ -1,19 +1,18 @@
 #enconding: utf-8
 
 Feature: Display the list of users
-	In order to know which user the app have
-	As administrator
+	In order to know which users the app has
+	As an administrator
 	I want to see a list of users
 
 	Scenario: Delete user
 		Given I am in the users list page
 		When I click the new user link
-		When I insert a user delete_test_name and delete_test@email.com
+		And I insert a user delete_test_name and delete_test@email.com
 		And I click the submit button
 		Then I should see delete_test@email.com in the users list.
-		Given I am in the users list page
 		When I click the delete user link delete_test@email.com
-		And I should not see the delete_test@email.com in the table
+		Then I should not see the delete_test@email.com in the table
 
 	Scenario: Edit user
 		Given I am in the users list page
