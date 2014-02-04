@@ -6,9 +6,11 @@ Feature: User administration, as admin
 	I can Update user
 	I can Delete user
 
-	Scenario: Delete user
+	Background:
 		Given I am in the users list page
 		When I click the new user link
+
+	Scenario: Delete user
 		When I insert a user delete_test_name and delete_test@email.com with pass scio123
 		And I click the submit button
 		Then I should see delete_test@email.com in the users list.
@@ -17,8 +19,6 @@ Feature: User administration, as admin
 		And I should not see the delete_test@email.com in the table
 
 	Scenario: Edit user
-		Given I am in the users list page
-		When I click the new user link
 		When I insert a user test_name and test@email.com with pass scio123
 		And I click the submit button
 		Then I should see test@email.com in the users list.
@@ -29,8 +29,6 @@ Feature: User administration, as admin
 		Then I should see a message User was successfully updated.
 
 	Scenario: Show error editing user
-		Given I am in the users list page
-		When I click the new user link
 		When I insert a user test_name and test@email.com with pass 
 		And I click the submit button
 		Then I should see test@email.com in the users list.
@@ -41,15 +39,11 @@ Feature: User administration, as admin
 		Then I should see a message Email is invalid
 	
 	Scenario: Create new user
-		Given I am in the users list page
-		When I click the new user link
-		When I insert a user test_name and test@email.com with pass scio123
+		When I insert a user test_name and test_2@email.com with pass scio123
 		And I click the submit button
-		Then I should see test@email.com in the users list.
+		Then I should see a message User was successfully created.
 
 	Scenario: Show error message for invalid email creating a new user
-		Given I am in the users list page
-		When I click the new user link
 		When I insert a user name and and incorrect email with pass scio123
 		And I click the submit button
 		Then I should see a message Email is invalid 

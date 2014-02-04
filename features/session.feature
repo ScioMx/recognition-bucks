@@ -3,7 +3,7 @@
 Feature: User log in
 	User should be able to create a session in the app and exit from it
 
-	Scenario: Sign up user
+	Background: Sign up user
 		Given the home page
 		Then I should see a link for sign up
 		When I click the sign up link
