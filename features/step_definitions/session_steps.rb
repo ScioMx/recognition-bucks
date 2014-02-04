@@ -11,7 +11,7 @@ When(/^I click the sign up link$/) do
 end
 
 Then(/^I should be in the sign up page$/) do
-  assert current_path.should == sign_up_path
+  assert current_path == sign_up_path
 end
 
 When(/^I fill the form with this information: name: (.*?), email: (.*?), pass: (.*?), pass_confirm: (.*?)$/) do |name, email, pass, pass_confirm|
@@ -26,7 +26,7 @@ When(/^click the (.*?) button$/) do |id|
 end
 
 Then(/^I should see "(.*?)"$/) do |message|
-  assert page.should have_content(message)
+  assert page.has_content?(message)
 end
 
 Then(/^I should see a link for log in$/) do
@@ -38,7 +38,7 @@ When(/^I click the log in link$/) do
 end
 
 Then(/^I should be in the log in page$/) do
-  assert current_path.should == log_in_path
+  assert current_path == log_in_path
 end
 
 When(/^I fill the form with this information: email: (.*?), pass: (.*?)$/) do |email, pass|
