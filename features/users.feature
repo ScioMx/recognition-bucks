@@ -14,9 +14,8 @@ Feature: User administration, as admin
 		When I insert a user delete_test_name and delete_test@email.com with pass scio123
 		And I click the submit button
 		Then I should see delete_test@email.com in the users list.
-		Given I am in the users list page
 		When I click the delete user link delete_test@email.com
-		And I should not see the delete_test@email.com in the table
+		Then I should not see the delete_test@email.com in the table
 
 	Scenario: Edit user
 		When I insert a user test_name and test@email.com with pass scio123
