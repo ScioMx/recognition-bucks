@@ -12,9 +12,11 @@ When(/^I click the new user link$/) do
   click_link_or_button( "btn_new_user")
 end
 
-When(/^I insert a user (.*) and (.*)$/) do |test_name, test_email|
+When(/^I insert a user (.*) and (.*) with (.*?)$/) do |test_name, test_email, test_pass|
   fill_in("fld_name", :with => test_name)
   fill_in("fld_email", :with => test_email)
+  fill_in("fld_password", :with => test_pass)
+  fill_in("fld_password_confirmation", :with => test_pass)
 end
 
 When(/^I click the submit button$/) do

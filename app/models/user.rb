@@ -8,10 +8,9 @@ class User < ActiveRecord::Base
 						uniqueness: true,
 						presence: true, 	
 						format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i }
-	validates :password, 
-						confirmation: true, 
-						presence:true, 
-						:on => :create
+
+	validates_presence_of :password, :password_confirmation, :on => :create
+	validates_confirmation_of :password,  message: 'should match confirmation'
 
 	def self.authenticate(email, password)
 		user = find_by_email(email)
@@ -28,4 +27,5 @@ class User < ActiveRecord::Base
 			self.password_hash = BCrypt::Engine.hash_secret(password, password_salt)
 		end
 	end
+
 end

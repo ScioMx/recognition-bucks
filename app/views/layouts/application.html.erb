@@ -11,10 +11,10 @@
 <div id="user_nav">
   <% if current_user %>
   	Logged in as <%= current_user.name %>
-  	<%= link_to "Log out", log_out_path %>
+  	<%= link_to "Log out", log_out_path, :id => "lnk_log_out" %>
   <% else %>
-  	<%= link_to "Log in ", log_in_path %> or 
-  	<%= link_to "Sign up", sign_up_path %>
+  	<%= link_to "Log in ", log_in_path, :id => "lnk_log_in" %> or 
+  	<%= link_to "Sign up", sign_up_path, :id => "lnk_sign_up" %>
   <% end %>
 
 </div>

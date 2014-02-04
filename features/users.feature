@@ -1,14 +1,15 @@
 #enconding: utf-8
 
-Feature: Display the list of users
-	In order to know which user the app have
-	As administrator
-	I want to see a list of users
+Feature: User administration, as admin 
+	I can Create user
+	I can Retrive user
+	I can Update user
+	I can Delete user
 
 	Scenario: Delete user
 		Given I am in the users list page
 		When I click the new user link
-		When I insert a user delete_test_name and delete_test@email.com
+		When I insert a user delete_test_name and delete_test@email.com with pass scio123
 		And I click the submit button
 		Then I should see delete_test@email.com in the users list.
 		Given I am in the users list page
@@ -18,7 +19,7 @@ Feature: Display the list of users
 	Scenario: Edit user
 		Given I am in the users list page
 		When I click the new user link
-		When I insert a user test_name and test@email.com
+		When I insert a user test_name and test@email.com with pass scio123
 		And I click the submit button
 		Then I should see test@email.com in the users list.
 		When I click the edit test@email.com link
@@ -30,7 +31,7 @@ Feature: Display the list of users
 	Scenario: Show error editing user
 		Given I am in the users list page
 		When I click the new user link
-		When I insert a user test_name and test@email.com
+		When I insert a user test_name and test@email.com with pass 
 		And I click the submit button
 		Then I should see test@email.com in the users list.
 		When I click the edit test@email.com link
@@ -42,13 +43,13 @@ Feature: Display the list of users
 	Scenario: Create new user
 		Given I am in the users list page
 		When I click the new user link
-		When I insert a user test_name and test@email.com
+		When I insert a user test_name and test@email.com with pass scio123
 		And I click the submit button
 		Then I should see test@email.com in the users list.
 
 	Scenario: Show error message for invalid email creating a new user
 		Given I am in the users list page
 		When I click the new user link
-		When I instert a user name and an incorrect email
+		When I insert a user name and and incorrect email with pass scio123
 		And I click the submit button
-		Then I should see a message Email is invalid
+		Then I should see a message Email is invalid 
