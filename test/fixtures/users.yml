@@ -3,7 +3,11 @@
 fake_user:
   name: test_name
   email: test@email.com
+  password_hash: $2a$10$cevBRngvIgaExF.8CWeYD.19YVt6vRkvgMFFBcDxyT1O931cwyn6a
+  password_salt: $2a$10$cevBRngvIgaExF.8CWeYD.
 
 second_fake_user:
   name: second_test_name
   email: second_test@email.com
+  password_hash: scio, 
+  password_salt: scio
