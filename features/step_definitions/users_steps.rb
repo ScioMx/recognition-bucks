@@ -39,7 +39,7 @@ end
  
 When(/^I click the delete user link (.*)$/) do |test_email|
 	assert page.has_content?(@test_email)
-  click_on('Destroy')
+  click_on('btn_delete_user_'+test_email)
   page.driver.browser.switch_to.alert.accept
 end
 

@@ -50,6 +50,11 @@ class UserTest < ActiveSupport::TestCase
     end
   end
 
+  test "Should authenticate user" do
+    user = User.find_by_email("test@email.com")
+    assert_not_nil user
+  end
+
 
 
 end
