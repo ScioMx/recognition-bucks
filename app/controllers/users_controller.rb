@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
+  before_filter :authorize, :except => [:new, :create, :show]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+
 
   def index
     @users = User.all
@@ -17,11 +19,10 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    
     if @user.save
       redirect_to @user, notice: 'User was successfully created.' 
     else
-      render action: 'new' 
+      render action: 'new', notice: 'An error occurred, the user was not created.' 
     end
   end
 
@@ -47,8 +48,7 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
     end
 
-    
     def user_params
-      params.require(:user).permit(:name, :email)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation)
     end
 end

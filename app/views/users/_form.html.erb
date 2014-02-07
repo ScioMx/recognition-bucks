@@ -19,6 +19,14 @@
     <%= f.label :email %><br>
     <%= f.text_field :email, id: "fld_email"%>
   </div>
+  <div class="field">
+    <%= f.label :password %><br>
+    <%= f.password_field :password, id: "fld_password"%>
+  </div>
+  <div class="field">
+    <%= f.label :password_confirmation %><br>
+    <%= f.password_field :password_confirmation, id: "fld_password_confirmation"%>
+  </div>
   <div class="actions">
     <%= f.submit id: "btn_create_user" %>
   </div>

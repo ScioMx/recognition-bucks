@@ -5,6 +5,8 @@
 # files.
 
 require 'cucumber/rails'
+require 'database_cleaner'
+require 'database_cleaner/cucumber'
 
 Capybara.javascript_driver = :selenium
 Capybara.default_driver = :selenium
@@ -36,18 +38,39 @@ ActionController::Base.allow_rescue = false
 # Remove/comment out the lines below if your app doesn't have a database.
 # For some databases (like MongoDB and CouchDB) you may need to use :truncation instead.
 begin
-  DatabaseCleaner.strategy = :transaction
+  DatabaseCleaner.strategy = :truncation
 rescue NameError
   raise "You need to add database_cleaner to your Gemfile (in the :test group) if you wish to use it."
 end
 
 
 Before do
+	seed_users
   DatabaseCleaner.start
 end
 
 After do |scenario|
   DatabaseCleaner.clean
+  seed_users
+end
+
+def seed_users
+	users = User.create([
+	{
+		name: "jcrip", 
+		email: "test@email.com",
+		password: "scio123",
+		password_confirmation: "scio123", 
+		role: "admin"
+	},
+	{
+		name: "other", 
+		email: "second_test@email.com",
+		password: "scio123",
+		password_confirmation: "scio123", 
+		role: "normal"
+	}
+])
 end
 
 # You may also want to configure DatabaseCleaner to use different strategies for certain features and scenarios.
