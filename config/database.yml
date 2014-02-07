@@ -13,8 +13,7 @@ test: &test
   pool: 5
   timeout: 5000
   username: recbucks
-  password: scio123
-
+  
 production:
   adapter: postgresql
   database: db/production
