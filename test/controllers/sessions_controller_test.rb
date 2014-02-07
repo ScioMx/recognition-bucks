@@ -12,7 +12,7 @@ class SessionsControllerTest < ActionController::TestCase
   	post :create, { email: "test@email.com", password: "scio123" }
   	assert_not_nil session[:user_id]
   	assert_equal  "Logged in!", flash[:notice]
-    assert_response :success
+    assert_response :redirect
   end
 
   test "Should destroy session" do
