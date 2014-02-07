@@ -12,9 +12,8 @@ test: &test
   host: localhost
   pool: 5
   timeout: 5000
-  username: recbucks
-  password: scio123
-
+  username: postgres
+  
 production:
   adapter: postgresql
   database: db/production
