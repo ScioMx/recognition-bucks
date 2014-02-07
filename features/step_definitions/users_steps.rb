@@ -51,9 +51,9 @@ When(/^I click the edit (.*) link$/) do |test_email|
 	find(:xpath, "//a[@id='btn_edit_user_#{test_email}']").click  
 end
 
-Then(/^I should see the form filled with user data$/) do
-  assert page.has_xpath?("//input[@value='test_name']")
- 	assert page.has_xpath?("//input[@value='test@email.com']")
+Then(/^I should see the form filled with (.*) and (.*) data$/) do |test_name, test_email|
+  assert page.has_xpath?("//input[@value='#{test_name}']")
+ 	assert page.has_xpath?("//input[@value='#{test_email}']")
 end
 
 Then(/^I change the name to (.*) and the email for (.*)$/) do |edited_name, edited_email|

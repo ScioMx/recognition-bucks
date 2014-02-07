@@ -45,11 +45,32 @@ end
 
 
 Before do
+	seed_users
   DatabaseCleaner.start
 end
 
 After do |scenario|
   DatabaseCleaner.clean
+  seed_users
+end
+
+def seed_users
+	users = User.create([
+	{
+		name: "jcrip", 
+		email: "test@email.com",
+		password: "scio123",
+		password_confirmation: "scio123", 
+		role: "admin"
+	},
+	{
+		name: "other", 
+		email: "second_test@email.com",
+		password: "scio123",
+		password_confirmation: "scio123", 
+		role: "normal"
+	}
+])
 end
 
 # You may also want to configure DatabaseCleaner to use different strategies for certain features and scenarios.
