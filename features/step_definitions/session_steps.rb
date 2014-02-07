@@ -21,8 +21,12 @@ When(/^I fill the form with this information: name: (.*?), email: (.*?), pass: (
   fill_in("fld_password_confirmation", :with => pass_confirm)
 end
 
-When(/^click the (.*?) button$/) do |id|
-  click_button(id) 
+When(/^click the create button button$/) do 
+  click_button("btn_create_user") 
+end
+
+When(/^click the log in button$/) do 
+  click_button("btn_log_in") 
 end
 
 Then(/^I should see "(.*?)"$/) do |message|

@@ -12,7 +12,7 @@ Feature: User administration, as admin
 		When I click the log in link
 		Then I should be in the log in page
 		When I fill the form with this information: email: test@email.com, pass: scio123
-		And click the btn_log_in button
+		And click the log in button
 		Then I should see "Logged in!"
 		Given I am in the users list page
 		When I click the new user link

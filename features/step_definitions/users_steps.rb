@@ -20,7 +20,7 @@ When(/^I insert a user (.*) and (.*) with (.*?)$/) do |test_name, test_email, te
 end
 
 When(/^I click the submit button$/) do
-  click_link_or_button( "btn_create_user")
+  click_link_or_button("btn_create_user")
 end
 
 Then(/^I should see (.*) in the users list\.$/) do |test_email|
