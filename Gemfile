@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+# Use ActiveModel has_secure_password
+gem 'bcrypt-ruby', :require => 'bcrypt'
+
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
 
@@ -15,7 +18,7 @@ gem 'pg'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
 
-gem "selenium-webdriver"
+gem 'selenium-webdriver'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -28,8 +31,8 @@ gem 'uglifier', '>= 1.3.0'
 
 group :test do
   gem 'rake'
-  gem "cucumber-rails", :require => false
-  gem "database_cleaner"
+  gem 'cucumber-rails', :require => false
+  gem 'database_cleaner'
 end
 
 group :doc do
@@ -39,9 +42,6 @@ end
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
-
-# Use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.1.2'
 
 # Use unicorn as the app server
 # gem 'unicorn'
