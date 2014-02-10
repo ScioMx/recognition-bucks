@@ -7,21 +7,21 @@ class ApplicationController < ActionController::Base
   protected
 
   def admin?
-  	role ||= User.find(session[:user_id]).role if session[:user_id]
-  	role != nil && role == "admin"
+    role ||= User.find(session[:user_id]).role if session[:user_id]
+    role != nil && role == "admin"
   end
 
   def authorize
-  	unless admin?
-  		flash[:error] = "Unauthorized access"
-  		redirect_to sign_up_path
-  		false
-  	end
+    unless admin?
+      flash[:error] = "Unauthorized access"
+      redirect_to sign_up_path
+      false
+    end
   end
 
   private
   
   def current_user
-  	@current_user ||= User.find(session[:user_id]) if session[:user_id]
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
 end
