@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RecognitionBucks</title>
+    <title>Recognition Bucks App | <%= yield(:title) %> </title>
     <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
     <%= csrf_meta_tags %>
@@ -12,7 +12,7 @@
         <div class="container">
           Logo goes here! <br/>
           Recognition Bucks
-          <nav>
+          <nav> 
             <ul class="nav pull-right">
               <li><%= link_to "Home", "#"%></li>
               <li><%= link_to "Help", "#"%></li>
