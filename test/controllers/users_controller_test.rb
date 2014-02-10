@@ -3,9 +3,7 @@ require 'test_helper'
 class UsersControllerTest < ActionController::TestCase
   setup do
     @user = users(:fake_user)
-    switch_controller(SessionsController) do
-        post :create, { email: "test@email.com", password: "scio123" }
-    end
+    session[:user_id] = @user.id
   end
 
   test "should get index" do

@@ -8,11 +8,7 @@ class ApplicationController < ActionController::Base
 
   def admin?
   	role ||= User.find(session[:user_id]).role if session[:user_id]
-  	if role != nil && role == "admin"
-  		true
-  	else
-  		false
-  	end
+  	role != nil && role == "admin"
   end
 
   def authorize
