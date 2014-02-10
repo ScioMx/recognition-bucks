@@ -1,18 +1,21 @@
 #enconding: utf-8
 
 Feature: Static pages
+  
+  Background: Visit main page
+    Given the home page
 
   Scenario: Home
-    Given the home page
-    Then it should have the content "Recognition Bucks App"
+    When I click the Home link
+    Then it should have the content "Welcome to the Recognition Bucks App"
     And it should have the title "Recognition Bucks App | Home" 
 
   Scenario: Help
-    Given the help page
+    When I click the Help link
     Then it should have the content "Help"
     And it should have the title "Recognition Bucks App | Help" 
 
   Scenario: About
-    Given the about page
+    When I click the About link
     Then it should have the content "About"
     And it should have the title "Recognition Bucks App | About" 
