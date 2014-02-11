@@ -7,8 +7,7 @@ RecognitionBucks::Application.routes.draw do
   get 'sign_up' => 'users#new', :as => 'sign_up'
   get 'create_session' => 'sessions#create', :as => 'create_session'
   root :to => 'static_pages#home'
-  resources :users
-  resources :sessions
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with 'rake routes'.
 
