@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   end
 
   def new
-    @user = User.new
+    redirect_to  new_user_session_path
   end
 
   def edit
