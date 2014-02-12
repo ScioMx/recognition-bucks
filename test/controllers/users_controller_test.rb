@@ -53,7 +53,7 @@ class UsersControllerTest < ActionController::TestCase
       delete :destroy, id: @user
     end
 
-    assert_redirected_to users_path
+    assert_redirected_to users_index_path
   end
 
   test "Should not create user if has incorrect email format" do

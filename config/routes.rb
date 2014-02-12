@@ -1,13 +1,15 @@
 RecognitionBucks::Application.routes.draw do
   devise_for :users
-  get "static_pages/home"
-  get "static_pages/help"
-  get "static_pages/about"
+  
+  get 'show_users' => 'users#index', :as => 'show_users'
+  get 'new_user' => 'users#new', :as => 'new_user'
+  get 'static_pages/home'
+  get 'static_pages/help'
+  get 'static_pages/about'
   get 'log_in' => 'sessions#new', :as => 'log_in'
   get 'log_out' => 'sessions#destroy', :as => 'log_out'
-  get 'sign_up' => 'users#new', :as => 'sign_up'
-  get 'create_session' => 'sessions#create', :as => 'create_session'
   root :to => 'static_pages#home'
+  resources :users
     
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with 'rake routes'.
