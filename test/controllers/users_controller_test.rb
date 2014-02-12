@@ -1,8 +1,10 @@
 require 'test_helper'
 
 class UsersControllerTest < ActionController::TestCase
+  include Devise::TestHelpers
+  
   setup do
-   @user = users(:fake_user)
+    @user = User.first
     session[:user_id] = @user.id
   end
 
@@ -13,6 +15,7 @@ class UsersControllerTest < ActionController::TestCase
   end
 
   test "should get new" do
+    puts :new
     get :new
     assert_response :redirect
   end
@@ -21,14 +24,13 @@ class UsersControllerTest < ActionController::TestCase
     assert_difference('User.count') do
       post :create, user: { 
                       email: "test2@email.com", 
-                      name: "some name",
-                      password: "scio123",
-                      password_confirmation: "scio123"
+                      password: "scio1234",
+                      password_confirmation: "scio1234"
                     }
     end
 
     assert_equal "User was successfully created.", flash[:notice]
-    assert_redirected_to user_path(assigns(:user))
+    assert_redirected_to root_path
   end
 
   test "should show user" do
@@ -42,8 +44,8 @@ class UsersControllerTest < ActionController::TestCase
   end
 
   test "should update user" do
-    patch :update, id: @user, user: { email: @user.email, name: @user.name }
-    assert_redirected_to user_path(assigns(:user))
+    put :update, id: @user, user: {email: "update@email.com"}
+    assert_redirected_to root_path
   end
 
   test "should destroy user" do

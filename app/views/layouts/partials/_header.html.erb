@@ -13,7 +13,7 @@
               <li><%= link_to 'Manage users', users_path %></li>
             <% end %>
           <% else %>
-            <li><%= link_to "Log in", log_in_path, :id => "lnk_log_in" %></li>
+            <li><%= link_to "Log in", new_user_session_path, :id => "lnk_log_in" %></li>
             <li><%= link_to "Sign up", sign_up_path, :id => "lnk_sign_up" %></li>
           <% end %>
         </ul>

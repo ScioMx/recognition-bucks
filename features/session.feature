@@ -17,7 +17,7 @@ Feature: User log in
     Then I should see a link for log in
     When I click the log in link
     Then I should be in the log in page
-    When I fill the form with this information: email: jc@test.com, pass: scio123
+    When I fill the form with this information: email: jc@test.com, pass: scio1234
     And click the log in button
     Then I should see "Logged in!"
 

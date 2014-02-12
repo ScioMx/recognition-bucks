@@ -42,7 +42,7 @@ When(/^I click the log in link$/) do
 end
 
 Then(/^I should be in the log in page$/) do
-  assert current_path == log_in_path
+  assert current_path == new_user_session_path, "Expected " + new_user_session_path + " was "  + current_path
 end
 
 When(/^I fill the form with this information: email: (.*?), pass: (.*?)$/) do |email, pass|

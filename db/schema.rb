@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20140211230428) do
 
   create_table "users", force: true do |t|
     t.string   "role",                   default: "normal"
+    t.string   "name"
     t.string   "email",                  default: "",       null: false
     t.string   "encrypted_password",     default: "",       null: false
     t.string   "reset_password_token"
