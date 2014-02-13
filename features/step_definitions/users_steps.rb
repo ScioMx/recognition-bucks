@@ -14,7 +14,6 @@ When(/^I click the new user link$/) do
 end
 
 When(/^I insert a user (.*) and (.*) with (.*?)$/) do |test_name, test_email, test_pass|
-  fill_in("fld_name", :with => test_name)
   fill_in("fld_email", :with => test_email)
   fill_in("fld_password", :with => test_pass)
   fill_in("fld_password_confirmation", :with => test_pass)

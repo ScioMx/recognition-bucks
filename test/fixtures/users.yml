@@ -6,5 +6,6 @@
 #
 fake_user:
   email: test@email.com
-#two: {}
-#  column: value
+
+fake_user_2:
+  email: test_2@email.com

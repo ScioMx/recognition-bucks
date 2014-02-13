@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class UsersControllerTest < ActionController::TestCase
+class AdminControllerTest < ActionController::TestCase
   include Devise::TestHelpers
   
   setup do
@@ -15,9 +15,8 @@ class UsersControllerTest < ActionController::TestCase
   end
 
   test "should get new" do
-    puts :new
     get :new
-    assert_response :redirect
+    assert_response :success
   end
 
   test "should create user" do
@@ -30,7 +29,7 @@ class UsersControllerTest < ActionController::TestCase
     end
 
     assert_equal "User was successfully created.", flash[:notice]
-    assert_redirected_to root_path
+    assert_redirected_to admin_index_path
   end
 
   test "should show user" do
@@ -45,7 +44,7 @@ class UsersControllerTest < ActionController::TestCase
 
   test "should update user" do
     put :update, id: @user, user: {email: "update@email.com"}
-    assert_redirected_to root_path
+    assert_redirected_to admin_path
   end
 
   test "should destroy user" do
@@ -53,7 +52,7 @@ class UsersControllerTest < ActionController::TestCase
       delete :destroy, id: @user
     end
 
-    assert_redirected_to users_index_path
+    assert_redirected_to admin_index_path
   end
 
   test "Should not create user if has incorrect email format" do

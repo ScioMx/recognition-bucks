@@ -8,13 +8,13 @@
           <li><%= link_to "Help", static_pages_help_path %></li>
           <% if current_user %>
             <li><%= link_to "Logged in as " + current_user.email, "#" %> </li>
-            <li><%= link_to "Log out", "#", :id => "lnk_log_out" %></li>
+            <li><%= link_to "Log out", destroy_user_session_path, :method => :delete, :id => "lnk_log_out" %></li>
             <% if admin? %>
               <li><%= link_to 'Manage users', show_users_path %></li>
             <% end %>
           <% else %>
             <li><%= link_to "Log in", new_user_session_path, :id => "lnk_log_in" %></li>
-            <li><%= link_to "Sign up", "#", :id => "lnk_sign_up" %></li>
+            <li><%= link_to "Sign up", new_user_registration_path, :id => "lnk_sign_up" %></li>
           <% end %>
         </ul>
       </nav>

@@ -17,8 +17,8 @@
         <td><%= user.name %></td>
         <td><%= user.email %></td>
         <td><%= link_to 'Show', "#", id: "btn_show_user_#{user.email}" %></td>
-        <td><%= link_to 'Edit', edit_user_path(user), id: "btn_edit_user_#{user.email}" %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }, id: "btn_delete_user_#{user.email}"%></td>
+        <td><%= link_to 'Edit', edit_admin_path(user), id: "btn_edit_user_#{user.email}" %></td>
+        <td><%= link_to 'Destroy', "admin/#{user.id}", method: :delete, data: { confirm: 'Are you sure?' }, id: "btn_delete_user_#{user.email}"%></td>
       </tr>
     <% end %>
   </tbody>

@@ -11,18 +11,27 @@ When(/^I click the sign up link$/) do
 end
 
 Then(/^I should be in the sign up page$/) do
-  assert current_path == sign_up_path
+  assert current_path ==  new_user_registration_path, "Expected " + new_user_session_path + " was "  + current_path
 end
 
 When(/^I fill the form with this information: name: (.*?), email: (.*?), pass: (.*?), pass_confirm: (.*?)$/) do |name, email, pass, pass_confirm|
-  fill_in("fld_name", :with => name)
+  fill_in("fld_devise_email", :with => email)
+  fill_in("fld_devise_password", :with => pass)
+  fill_in("fld_devise_password_confirmation", :with => pass_confirm)
+end
+
+When(/^I fill the form with this information: name: (.*?), email: (.*?), pass: (.*?), pass_confirm: (.*?) for administrator$/) do |name, email, pass, pass_confirm|
   fill_in("fld_email", :with => email)
   fill_in("fld_password", :with => pass)
   fill_in("fld_password_confirmation", :with => pass_confirm)
 end
 
-When(/^click the create button button$/) do 
+When(/^click the create button for administrator$/) do 
   click_button("btn_create_user") 
+end
+
+When(/^click the create button$/) do 
+  click_button("btn_devise_create_user") 
 end
 
 When(/^click the log in button$/) do 
@@ -56,4 +65,8 @@ end
 
 When(/^I click the log out link$/) do
   click_link("lnk_log_out")
+end
+
+Then(/^I log out if I am already loged in$/) do
+  click_link("lnk_log_out") if find_link("lnk_log_out").visible?
 end
