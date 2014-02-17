@@ -1,8 +1,10 @@
 require 'test_helper'
 
-class UsersControllerTest < ActionController::TestCase
+class AdminControllerTest < ActionController::TestCase
+  include Devise::TestHelpers
+  
   setup do
-    @user = users(:fake_user)
+    @user = User.first
     session[:user_id] = @user.id
   end
 
@@ -21,14 +23,13 @@ class UsersControllerTest < ActionController::TestCase
     assert_difference('User.count') do
       post :create, user: { 
                       email: "test2@email.com", 
-                      name: "some name",
-                      password: "scio123",
-                      password_confirmation: "scio123"
+                      password: "scio1234",
+                      password_confirmation: "scio1234"
                     }
     end
 
     assert_equal "User was successfully created.", flash[:notice]
-    assert_redirected_to user_path(assigns(:user))
+    assert_redirected_to admin_index_path
   end
 
   test "should show user" do
@@ -42,8 +43,8 @@ class UsersControllerTest < ActionController::TestCase
   end
 
   test "should update user" do
-    patch :update, id: @user, user: { email: @user.email, name: @user.name }
-    assert_redirected_to user_path(assigns(:user))
+    put :update, id: @user, user: {email: "update@email.com"}
+    assert_redirected_to admin_path
   end
 
   test "should destroy user" do
@@ -51,7 +52,7 @@ class UsersControllerTest < ActionController::TestCase
       delete :destroy, id: @user
     end
 
-    assert_redirected_to users_path
+    assert_redirected_to admin_index_path
   end
 
   test "Should not create user if has incorrect email format" do

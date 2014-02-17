@@ -57,18 +57,13 @@ end
 def seed_users
 	users = User.create([
 	{
-		name: "jcrip", 
 		email: "test@email.com",
-		password: "scio123",
-		password_confirmation: "scio123", 
+		password: "scio1234",
 		role: "admin"
 	},
 	{
-		name: "other", 
 		email: "second_test@email.com",
-		password: "scio123",
-		password_confirmation: "scio123", 
-		role: "normal"
+		password: "scio1234"
 	}
 ])
 end

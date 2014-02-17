@@ -13,7 +13,7 @@ test: &test
   pool: 5
   timeout: 5000
   username: postgres
-  
+
 production:
   adapter: postgresql
   database: db/production

@@ -8,17 +8,12 @@
 
 users = User.create([
 	{
-		name: "jcrip", 
 		email: "jc_rip@hotmail.com",
-		password: "scio123",
-		password_confirmation: "scio123", 
+		password: "scio1234", 
 		role: "admin"
 	},
 	{
-		name: "other", 
 		email: "other@hotmail.com",
-		password: "scio123",
-		password_confirmation: "scio123", 
-		role: "normal"
+		password: "scio1234"
 	}
 ])
