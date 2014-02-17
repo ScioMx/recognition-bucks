@@ -19,11 +19,11 @@ When(/^I click the logo$/) do
   click_link("Logo")
 end
 
-Then(/^it should have the content "(.*?)"$/) do |content|
+Then(/^I should have the content "(.*?)"$/) do |content|
   page.assert_selector('h1', :text => content, :visible => true)
 end
 
-Then(/^it should have the title "(.*?)"$/) do |title|
+Then(/^I should have the title "(.*?)"$/) do |title|
  page.has_text?('title', :text => title)
 end
 
