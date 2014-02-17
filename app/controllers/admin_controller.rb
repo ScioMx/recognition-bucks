@@ -25,8 +25,8 @@ class AdminController < ApplicationController
   end
 
   def update
-    if @user.update(params.require(:user).permit(:email))
-      redirect_to admin_path, notice: 'User was successfully updated.' 
+    if @user.update(user_params_update)
+      redirect_to admin_path, notice: 'User was successfully updated.'
     else
       render action: 'edit'
     end
@@ -45,5 +45,9 @@ class AdminController < ApplicationController
 
     def user_params 
       params.require(:user).permit(:email, :password, :password_confirmation)
+    end
+
+    def user_params_update
+      params.require(:user).permit(:email, :name, :password, :password_confirmation)
     end
 end
