@@ -4,7 +4,7 @@ class Admin::UsersControllerTest < ActionController::TestCase
   include Devise::TestHelpers
   
   setup do
-    @user = User.first
+    @user = users(:fake_user)
     sign_in :user, @user
   end
 
@@ -71,7 +71,7 @@ class Admin::UsersControllerTest < ActionController::TestCase
   end
 
   test "Should redirect to home if isn't admin" do
-    user = User.last
+    user = users(:fake_user_2)
     sign_in :user, user
     get :index
     assert_redirected_to root_path
