@@ -27,14 +27,14 @@ Then(/^I should have the title "(.*?)"$/) do |title|
  page.has_text?('title', :text => title)
 end
 
-Then(/^I should be in the home page$/) do
+Then(/^I am in the home page$/) do
   assert_equal current_path,  static_pages_home_path
 end
 
-Then(/^I should be in the help page$/) do
+Then(/^I am in the help page$/) do
   assert_equal current_path,  static_pages_help_path
 end
 
-Then(/^I should be in the about page$/) do
+Then(/^I am in the about page$/) do
   assert_equal current_path,  static_pages_about_path
 end

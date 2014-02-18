@@ -8,15 +8,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def admin?
-    current_user != nil && current_user.role == "admin"
-  end
-
-  def authorize
-    unless admin?
-      flash[:error] = "Unauthorized access"
-      redirect_to sign_up_path
-      false
-    end
+    current_user != nil && current_user.role == 'admin'
   end
 
 end

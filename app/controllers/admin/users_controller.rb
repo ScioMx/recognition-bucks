@@ -1,4 +1,5 @@
 class Admin::UsersController < ApplicationController
+  before_action :authenticate_admin
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -49,5 +50,9 @@ class Admin::UsersController < ApplicationController
 
     def user_params_update
       params.require(:user).permit(:email, :name, :password, :password_confirmation)
+    end
+
+    def authenticate_admin
+      redirect_to root_path, notice: 'Access not authorized.' unless admin?
     end
 end

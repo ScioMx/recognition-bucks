@@ -16,14 +16,6 @@ ActiveRecord::Schema.define(version: 20140217182244) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "bucks", force: true do |t|
-    t.string   "description"
-    t.integer  "status"
-    t.integer  "value"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "users", force: true do |t|
     t.string   "role",                   default: "normal"
     t.string   "name"

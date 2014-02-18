@@ -70,4 +70,21 @@ class Admin::UsersControllerTest < ActionController::TestCase
     assert !@user.save
   end
 
+  test "Should redirect to home if isn't admin" do
+    user = User.last
+    sign_in :user, user
+    get :index
+    assert_redirected_to root_path
+    assert_equal "Access not authorized.", flash[:notice]
+    get :new
+    assert_redirected_to root_path
+    assert_equal "Access not authorized.", flash[:notice]
+    get :show, id: user
+    assert_redirected_to root_path
+    assert_equal "Access not authorized.", flash[:notice]
+    get :edit, id: user
+    assert_redirected_to root_path
+    assert_equal "Access not authorized.", flash[:notice]
+  end
+
 end

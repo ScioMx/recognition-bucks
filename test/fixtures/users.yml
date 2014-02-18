@@ -6,6 +6,7 @@
 #
 fake_user:
   email: test@email.com
+  role:  admin
 
 fake_user_2:
   email: test_2@email.com
