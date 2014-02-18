@@ -1,11 +1,12 @@
 #encoding: utf-8
 
 When(/^I visit the list of users$/) do
-  visit users_path
+  click_link("Manage users")
 end
 
 Given(/^I am in the users list page$/) do
-  visit users_path
+  assert current_path == admin_users_path, "Expected " + admin_users_path + " was "  + current_path
+  assert page.has_content?("Listing users")
 end
 
 When(/^I click the new user link$/) do
@@ -13,7 +14,6 @@ When(/^I click the new user link$/) do
 end
 
 When(/^I insert a user (.*) and (.*) with (.*?)$/) do |test_name, test_email, test_pass|
-  fill_in("fld_name", :with => test_name)
   fill_in("fld_email", :with => test_email)
   fill_in("fld_password", :with => test_pass)
   fill_in("fld_password_confirmation", :with => test_pass)
@@ -24,7 +24,7 @@ When(/^I click the submit button$/) do
 end
 
 Then(/^I should see (.*) in the users list\.$/) do |test_email|
-  visit users_path
+  click_link("Manage users")
   assert page.has_content?(test_email)
 end
 
@@ -63,4 +63,24 @@ end
 
 Then(/^I should see a message (.*)$/) do |message|
   assert page.has_content?(message)
+end
+
+Then(/^a link to manage users$/) do
+  find_link("Manage users").visible?  
+end
+
+Then(/^I should see the sign up page$/) do
+ assert current_path == new_user_path
+ assert page.has_content?("Sign Up")
+end
+
+Then(/^I should see the form filled with (.*) data$/) do |test_email|
+  assert page.has_xpath?("//input[@value='#{test_email}']")
+end
+
+Then(/^I change the email for (.*) and password to (.*) instead of (.*)$/) do |updated_email, updated_pass, old_pass|
+  fill_in("fld_email", :with => updated_email)
+  fill_in("fld_password", :with => updated_pass)
+  fill_in("fld_password_confirmation", :with => updated_pass)
+#  fill_in("fld_actual_password", :with => old_pass)
 end
