@@ -1,11 +1,11 @@
 require 'test_helper'
 
-class AdminControllerTest < ActionController::TestCase
+class Admin::UsersControllerTest < ActionController::TestCase
   include Devise::TestHelpers
   
   setup do
     @user = User.first
-    session[:user_id] = @user.id
+    sign_in :user, @user
   end
 
   test "should get index" do
@@ -29,7 +29,7 @@ class AdminControllerTest < ActionController::TestCase
     end
 
     assert_equal "User was successfully created.", flash[:notice]
-    assert_redirected_to admin_index_path
+    assert_redirected_to admin_users_path
   end
 
   test "should show user" do
@@ -44,7 +44,7 @@ class AdminControllerTest < ActionController::TestCase
 
   test "should update user" do
     put :update, id: @user, user: {email: "update@email.com"}
-    assert_redirected_to admin_path
+    assert_redirected_to admin_users_path
   end
 
   test "should destroy user" do
@@ -52,7 +52,7 @@ class AdminControllerTest < ActionController::TestCase
       delete :destroy, id: @user
     end
 
-    assert_redirected_to admin_index_path
+    assert_redirected_to admin_users_path
   end
 
   test "Should not create user if has incorrect email format" do

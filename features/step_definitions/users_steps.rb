@@ -5,7 +5,7 @@ When(/^I visit the list of users$/) do
 end
 
 Given(/^I am in the users list page$/) do
-  assert current_path == show_users_path, "Expected " + new_user_session_path + " was "  + current_path
+  assert current_path == admin_users_path, "Expected " + admin_users_path + " was "  + current_path
   assert page.has_content?("Listing users")
 end
 

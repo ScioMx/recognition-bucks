@@ -1,15 +1,12 @@
 RecognitionBucks::Application.routes.draw do
-  get 'show_users' => 'admin#index', :as => 'show_users'
-  get 'new_user' => 'admin#new', :as => 'new_user'
-  get 'user' => 'admin#show', :as => 'user'
   get 'static_pages/home'
   get 'static_pages/help'
   get 'static_pages/about'
   root :to => 'static_pages#home'
-  resources :admin do
-    #put 'update_user' => 'admin#update', as: 'update_user'
-  end
   devise_for :users
+  namespace :admin do
+    resources :users
+  end 
 
     
   # The priority is based upon order of creation: first created -> highest priority.
