@@ -1,0 +1,33 @@
+<h1>Listing bucks</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Description</th>
+      <th>Status</th>
+      <th>Value</th>
+      <th>Goes to</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @bucks.each do |buck| %>
+      <tr>
+        <td><%= buck.description %></td>
+        <td><%= buck.status %></td>
+        <td><%= buck.value %></td>
+        <td><%= buck.goes_to %></td>
+        <td><%= link_to 'Show', buck %></td>
+        <td><%= link_to 'Edit', edit_buck_path(buck) %></td>
+        <td><%= link_to 'Destroy', buck, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Buck', new_buck_path %>

@@ -1,0 +1,33 @@
+<%= form_for(@buck) do |f| %>
+  <% if @buck.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@buck.errors.count, "error") %> prohibited this buck from being saved:</h2>
+
+      <ul>
+      <% @buck.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_field :description %>
+  </div>
+  <div class="field">
+    <%= f.label :status %><br>
+    <%= f.text_field :status %>
+  </div>
+  <div class="field">
+    <%= f.label :value %><br>
+    <%= f.number_field :value %>
+  </div>
+  <div class="field">
+    <%= f.label :goes_to %><br>
+    <%= f.number_field :goes_to %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+fake_buck_one:
+  description: Description 1
+  status: pending
+  value: 1
+  goes_to: 1
+
+fake_buck_two:
+  description: Description 2
+  status: pending
+  value: 1
+  goes_to: 1
