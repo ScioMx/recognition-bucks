@@ -1,9 +1,11 @@
 require 'test_helper'
 
-class UsersControllerTest < ActionController::TestCase
+class Admin::UsersControllerTest < ActionController::TestCase
+  include Devise::TestHelpers
+  
   setup do
     @user = users(:fake_user)
-    session[:user_id] = @user.id
+    sign_in :user, @user
   end
 
   test "should get index" do
@@ -21,14 +23,13 @@ class UsersControllerTest < ActionController::TestCase
     assert_difference('User.count') do
       post :create, user: { 
                       email: "test2@email.com", 
-                      name: "some name",
-                      password: "scio123",
-                      password_confirmation: "scio123"
+                      password: "scio1234",
+                      password_confirmation: "scio1234"
                     }
     end
 
     assert_equal "User was successfully created.", flash[:notice]
-    assert_redirected_to user_path(assigns(:user))
+    assert_redirected_to admin_users_path
   end
 
   test "should show user" do
@@ -42,8 +43,8 @@ class UsersControllerTest < ActionController::TestCase
   end
 
   test "should update user" do
-    patch :update, id: @user, user: { email: @user.email, name: @user.name }
-    assert_redirected_to user_path(assigns(:user))
+    put :update, id: @user, user: {email: "update@email.com"}
+    assert_redirected_to admin_users_path
   end
 
   test "should destroy user" do
@@ -51,7 +52,7 @@ class UsersControllerTest < ActionController::TestCase
       delete :destroy, id: @user
     end
 
-    assert_redirected_to users_path
+    assert_redirected_to admin_users_path
   end
 
   test "Should not create user if has incorrect email format" do
@@ -67,6 +68,23 @@ class UsersControllerTest < ActionController::TestCase
     @user.name = "test name"
     @user.email = "test incorrect email"
     assert !@user.save
+  end
+
+  test "Should redirect to home if isn't admin" do
+    user = users(:fake_user_2)
+    sign_in :user, user
+    get :index
+    assert_redirected_to root_path
+    assert_equal "Access not authorized.", flash[:notice]
+    get :new
+    assert_redirected_to root_path
+    assert_equal "Access not authorized.", flash[:notice]
+    get :show, id: user
+    assert_redirected_to root_path
+    assert_equal "Access not authorized.", flash[:notice]
+    get :edit, id: user
+    assert_redirected_to root_path
+    assert_equal "Access not authorized.", flash[:notice]
   end
 
 end

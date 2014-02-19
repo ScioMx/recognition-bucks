@@ -1,27 +1,14 @@
 class ApplicationController < ActionController::Base
+  before_action :authenticate_user!
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
-  helper_method :current_user, :admin?
+  helper_method :admin?
 
   protected
 
   def admin?
-    role ||= User.find(session[:user_id]).role if session[:user_id]
-    role != nil && role == "admin"
+    current_user != nil && current_user.role == 'admin'
   end
 
-  def authorize
-    unless admin?
-      flash[:error] = "Unauthorized access"
-      redirect_to sign_up_path
-      false
-    end
-  end
-
-  private
-  
-  def current_user
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
-  end
 end
