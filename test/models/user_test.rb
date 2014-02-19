@@ -24,11 +24,6 @@ class UserTest < ActiveSupport::TestCase
     assert user.save
   end
 
-  test "should retrive a user from data base" do
-    user = users(:fake_user)
-    assert_not_nil(user, "The user is nil")
-  end
-
   test "should not update user if it has an empty property" do
     user = users(:fake_user)
     assert_not user.update({:name => "test name", :email => ""})

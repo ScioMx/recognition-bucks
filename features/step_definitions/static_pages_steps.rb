@@ -1,7 +1,3 @@
-Given(/^the help page$/) do
-  visit static_pages_help_path
-end
-
 
 When(/^I click the Home link$/) do
   click_link("Home")

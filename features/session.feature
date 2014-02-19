@@ -3,55 +3,44 @@
 Feature: User log in
   User should be able to create a session in the app and exit from it
 
-  Background: Sign up user
-    Given the home page
-      And I see a link for sign up
+  Scenario: Sign up user
+    Given the home page with a sign up link visible
     When I click the sign up link
-      And I am in the sign up page
-    When I fill the form with this information: name: jc, email: jc@test.com, pass: scio1234, pass_confirm: scio1234
-      And I click the create button
+      And I fill the form with: email = jc@test.com, pass = scio1234
     Then I should see "Welcome! You have signed up successfully."
 
   Scenario: Log in user
-    Given the home page
-      And I log out if I am already loged in
-      And I see a link for log in
+    Given the home page with a log in link visible
     When I click the log in link
-      And I am in the log in page
-    When I fill the form with this information: email: jc@test.com, pass: scio1234
-      And I click the log in button
+      And I fill the log in form with: email = test@email.com, pass = scio1234
     Then I should see "Signed in successfully."
 
   Scenario: Log out user
-    Given the home page
-      And I see a link for log out
+    Given the home page with with a log out link visible
     When I click the log out link
     Then I should see "Signed out successfully."
 
-  Scenario: Error sign up user
-    Given the home page
-      And I log out if I am already loged in
-      And I see a link for sign up
-    When I click the sign up link
-      And I am in the sign up page
-      And I click the create button 
+  Scenario: Error sign up user "Email can't be blank"
+    Given the sign up page
+    When I send my information without email
     Then I should see "Email can't be blank"
-    When I fill the form with this information: name: jc, email: jc@test.com, pass: scio1234, pass_confirm: scio1234
-      And I click the create button 
+
+  Scenario: Error sign up user "Email has already been taken"
+    Given the sign up page
+    When I fill the form with: email = test@email.com, pass = scio1234
     Then I should see "Email has already been taken"
-    When I fill the form with this information: name: jc, email: jc@test, pass: scio1234, pass_confirm: scio1234
-      And I click the create button 
+
+  Scenario: Error sign up user "Email is invalid"
+    Given the sign up page
+    When I fill the form with: email = jc@test, pass = scio1234
     Then I should see "Email is invalid"
-    When I fill the form with this information: name: jc, email: jc5@test.com, pass: scio1234, pass_confirm: scio12
-      And I click the create button 
+
+  Scenario: Error sign up user "Password confirmation doesn't match Password"
+    Given the sign up page
+    When I fill the form with this: email = jc5@test.com, pass = scio1234, pass_confirm = scio12
     Then I should see "Password confirmation doesn't match Password"
 
   Scenario: Error log in user
-    Given the home page
-      And I log out if I am already loged in
-      And I see a link for log in
-    When I click the log in link
-      And I am in the log in page
-    When I fill the form with this information: email: no_existent_user@test.com, pass: scio1234
-      And I click the log in button
+    Given the log in page
+    When I fill the log in form with: email = no_existent_user@test.com, pass = scio1234
     Then I should see "Invalid email or password"

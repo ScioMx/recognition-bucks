@@ -2,7 +2,7 @@
 
 Feature: User administration, as admin 
   I can Create user
-  I can Retrive user
+  I can Retrieve user
   I can Update user
   I can Delete user
 
@@ -13,8 +13,7 @@ Feature: User administration, as admin
       And I am in the log in page
     When I fill the form with this information: email: test@email.com, pass: scio1234
       And I click the log in button
-    Then I should see "Signed in successfully."
-      And a link to manage users
+    Then I should see a link to manage users
 
   Scenario: Delete user
     Given I am in the users list page
