@@ -15,22 +15,17 @@ When(/^I click the logo$/) do
   click_link("Logo")
 end
 
-Then(/^I should have the content "(.*?)"$/) do |content|
+Then(/^I should see the Home page with content "(.*?)"$/) do |content|
+  assert_equal current_path,  static_pages_home_path
   page.assert_selector('h1', :text => content, :visible => true)
 end
 
-Then(/^I should have the title "(.*?)"$/) do |title|
- page.has_text?('title', :text => title)
-end
-
-Then(/^I am in the home page$/) do
-  assert_equal current_path,  static_pages_home_path
-end
-
-Then(/^I am in the help page$/) do
+Then(/^I should see the Help page with content "(.*?)"$/) do |content|
   assert_equal current_path,  static_pages_help_path
+  page.assert_selector('h1', :text => content, :visible => true)
 end
 
-Then(/^I am in the about page$/) do
+Then(/^I should see the About page with content "(.*?)"$/) do |content|
   assert_equal current_path,  static_pages_about_path
+  page.assert_selector('h1', :text => content, :visible => true)
 end

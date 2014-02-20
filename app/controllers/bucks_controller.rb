@@ -21,6 +21,7 @@ class BucksController < ApplicationController
     if @buck.save
       redirect_to @buck, notice: 'Buck was successfully created.'
     else
+      flash[:error] = 'Buck was not successfully created.'
       render action: 'new'
     end
   end
@@ -29,13 +30,14 @@ class BucksController < ApplicationController
     if @buck.update(buck_params)
       redirect_to @buck, notice: 'Buck was successfully updated.'
     else
+      flash[:error] = 'Buck was not successfully updated.'
       render action: 'edit'
     end
   end
 
   def destroy
     @buck.destroy
-    redirect_to bucks_url
+    redirect_to bucks_url, notice: 'Buck was successfully deleted.'
   end
 
   private

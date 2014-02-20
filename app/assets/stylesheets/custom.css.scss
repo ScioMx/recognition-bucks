@@ -61,6 +61,15 @@ p {
  color: green;
 }
 
+#error_explanation {
+	display: inline-block;	
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
 /* HEADER */
 
 #logo {
