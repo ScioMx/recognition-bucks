@@ -20,7 +20,7 @@ gem 'jquery-rails'
 gem 'pg'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.2'
+gem 'rails', '4.1.0'
 
 gem 'selenium-webdriver'
 
