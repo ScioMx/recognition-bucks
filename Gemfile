@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gem 'bootstrap-sass', '2.0.0.0'
 
 # Use ActiveModel has_secure_password
-gem 'bcrypt-ruby', :require => 'bcrypt'
+gem 'bcrypt'
 
 gem 'devise'
 
