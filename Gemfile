@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gem 'bootstrap-sass', '2.0.0.0'
 
 # Use ActiveModel has_secure_password
-gem 'bcrypt-ruby', :require => 'bcrypt'
+gem 'bcrypt'
 
 gem 'devise'
 
@@ -20,7 +20,7 @@ gem 'jquery-rails'
 gem 'pg'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.2'
+gem 'rails', '4.1.0'
 
 gem 'selenium-webdriver'
 
